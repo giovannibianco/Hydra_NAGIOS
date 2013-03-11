@@ -1,26 +1,26 @@
 Summary: NAGIOS Probe for Hydra Service
-Name: emi-hydra-nagios
+Name: nagios-plugins-hydra
 Version: 1.0.0
-Release: 1.noarch
+Release: 1
 License: Apache Software License
 Vendor: EMI
 Group: System Environment/Libraries
 Packager: ETICS
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 AutoReqProv: yes
-Source: emi-hydra-nagios.tgz
+Source: nagios-plugins-hydra-%{version}.tar.gz
+
+# %define _topdir %(echo $PWD)/
 
 %description
-The EMI Hydra Command-line Interface
+The EMI Hydra service NAGIOS probes.
 
 %prep
  
 
-%setup  
+%setup 
 
 %build
-  
-  
 
 %install
 make install

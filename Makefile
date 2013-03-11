@@ -45,6 +45,10 @@ dist:
 	test ! -f $(name)-$(version).tar.gz || rm $(name)-$(version).tar.gz
 	tar -C $(tmp_dir) -czf $(name)-$(version).tar.gz $(name)-$(version)
 	rm -fr $(tmp_dir)
+	test ! -d SOURCES || rm -fr SOURCES
+	test ! -d SRPMS || rm -fr SRPMS
+	mkdir SOURCES SRPMS
+	cp $(name)-$(version).tar.gz SOURCES/.
 
 
 install:
