@@ -34,8 +34,18 @@ class HYDRAStatusProbe( HydraStatusProbe ):
         super(HYDRAStatusProbe, self).__init__(serviceName, clientAuth)
 
     def getURLTemplate( self ):
-        return "https://%(hostname)s:%(port)s/glite-data-hydra-service/services"
-        
+        return "https://%(hostname)s:%(port)s/1/glite-data-hydra-service/services"
+#
+# We must add the "1" in the line above because we know that a deployed
+# Hydra service will follow the scheme
+# https://%(hostname)s:%(port)s/1/glite-data-hydra-service/services   
+# https://%(hostname)s:%(port)s/2/glite-data-hydra-service/services  
+# ...
+# https://%(hostname)s:%(port)s/n/glite-data-hydra-service/services   
+# etc
+#
+# This may need to be re-visited in the future
+#  
 def main():
     probe = HYDRAStatusProbe("EMI Hydra", True) 
     probe.createParser()
